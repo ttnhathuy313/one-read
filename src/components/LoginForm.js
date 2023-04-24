@@ -4,7 +4,7 @@ import "./LoginForm.css";
 
 const LoginForm = () => {
     return (
-        <div className="max-w-sm">
+        <div className="max-w-sm inline-block">
             <Card id = "mycard">
                 <div className="text-2xl font-semibold text-white">
                     Sign in to OneRead
@@ -23,6 +23,7 @@ const LoginForm = () => {
                     type="email"
                     placeholder="example@student.fulbright.edu.vn"
                     required={true}
+                    className="bg-gray-600"
                     />
                 </div>
                 <div>
