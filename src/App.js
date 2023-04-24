@@ -1,13 +1,12 @@
 import React from "react";
 import NavigationBar from "./components/NavigationBar";
+import LandingPage from "./components/LandingPage";
 
 const App = () => {
   return (
     <>
       <NavigationBar />
-      <div className="App">
-        Hello World
-      </div>
+      <LandingPage />
     </>
   );
 }
