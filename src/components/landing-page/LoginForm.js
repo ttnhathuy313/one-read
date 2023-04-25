@@ -5,7 +5,8 @@ import "./LoginForm.css";
 
 const LoginForm = () => {
     const navigate = useNavigate();
-    const handleSignIn = () => {
+    const handleSignIn = (e) => {
+        e.preventDefault();
         console.log('dashboard')
         navigate("/dashboard");
     }
@@ -15,7 +16,7 @@ const LoginForm = () => {
                 <div className="text-2xl font-semibold text-white">
                     Sign in to OneRead
                 </div>
-                <form className="flex flex-col gap-4">
+                <form className="flex flex-col gap-4" onSubmit={handleSignIn}>
                 <div>
                     <div className="mb-2 block">
                     <Label
@@ -59,7 +60,7 @@ const LoginForm = () => {
                         </a>
                     </div>
                 </div>
-                <Button type="submit" onSubmit={handleSignIn}>
+                <Button type="submit">
                     Submit
                 </Button>
                 <div className="flex">  
