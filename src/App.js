@@ -1,5 +1,5 @@
 import React from "react";
-import LandingPage from "./components/LandingPage";
+import LandingPage from "./components/landing-page/LandingPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashBoard from "./components/dashboard/DashBoard";
 
