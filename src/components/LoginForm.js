@@ -1,8 +1,14 @@
 import React from "react" 
 import { Button, Checkbox, Label, TextInput, Card } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 
 const LoginForm = () => {
+    const navigate = useNavigate();
+    const handleSignIn = () => {
+        console.log('dashboard')
+        navigate("/dashboard");
+    }
     return (
         <div className="max-w-sm inline-block">
             <Card id = "mycard">
@@ -23,7 +29,6 @@ const LoginForm = () => {
                     type="email"
                     placeholder="example@student.fulbright.edu.vn"
                     required={true}
-                    className="bg-gray-600"
                     />
                 </div>
                 <div>
@@ -54,7 +59,7 @@ const LoginForm = () => {
                         </a>
                     </div>
                 </div>
-                <Button type="submit">
+                <Button type="submit" onSubmit={handleSignIn}>
                     Submit
                 </Button>
                 <div className="flex">  

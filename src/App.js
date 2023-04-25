@@ -1,13 +1,16 @@
 import React from "react";
-import NavigationBar from "./components/NavigationBar";
 import LandingPage from "./components/LandingPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DashBoard from "./components/dashboard/DashBoard";
 
 const App = () => {
   return (
-    <>
-      <NavigationBar />
-      <LandingPage />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/dashboard" element={<DashBoard />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
