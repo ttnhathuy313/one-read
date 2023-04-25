@@ -1,9 +1,9 @@
 import React from "react";
-import NavigationBar from "../landing-page/NavigationBar";
+import FullNavigationBar from "./FullNavigationBar";
 const DashBoard = () => {
     return (
         <div>
-            <NavigationBar />
+            <FullNavigationBar />
             <h1>Dashboard</h1>
         </div>
     )
