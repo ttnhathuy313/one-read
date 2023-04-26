@@ -1,10 +1,11 @@
 import React from "react";
 import FullNavigationBar from "./FullNavigationBar";
+import SectionBar from "./SectionBar";
 const DashBoard = () => {
     return (
         <div>
             <FullNavigationBar />
-            <h1>Dashboard</h1>
+            <SectionBar />
         </div>
     )
 }
