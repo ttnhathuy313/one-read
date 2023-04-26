@@ -8,8 +8,8 @@ const LandingPage = () => {
     return (
         <div>
             <NavigationBar />
-            <div className="bg-gray-900 w-screen h-screen overflow-hidden px-32">
-                <div className="center-card flex items-start justify-between"> 
+            <div className="bg-gray-900 w-screen h-screen overflow-hidden px-32 flex">
+                <div className="center-card flex items-start justify-between flex-nowrap self-center"> 
                     <Introduction />
                     <LoginForm />
                 </div>

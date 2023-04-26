@@ -1,10 +1,13 @@
 import React from "react";
-import NavigationBar from "../landing-page/NavigationBar";
+import FullNavigationBar from "./FullNavigationBar";
+import SectionBar from "./SectionBar";
+import Home from "./Home";
 const DashBoard = () => {
     return (
-        <div>
-            <NavigationBar />
-            <h1>Dashboard</h1>
+        <div className="overflow-y-auto">
+            <FullNavigationBar />
+            <SectionBar />
+            <Home />
         </div>
     )
 }
