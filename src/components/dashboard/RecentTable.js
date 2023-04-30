@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Checkbox, Progress } from "flowbite-react";
+import { Table, Progress } from "flowbite-react";
 import "./RecentTable.css"
 
 const readingList = [
@@ -45,11 +45,39 @@ const readingList = [
         dueDate: "May 10, 2023",
         progress: 12
     },
+    {
+        id: 7,
+        title: "testing",
+        pagesLeft: 3,
+        dueDate: "May 08, 2023",
+        progress: 95
+    },
+    {
+        id: 8,
+        title: "testing2",
+        pagesLeft: 3,
+        dueDate: "May 08, 2023",
+        progress: 95
+    },
+    {
+        id: 9,
+        title: "testing3",
+        pagesLeft: 3,
+        dueDate: "May 08, 2023",
+        progress: 95
+    },
+    {
+        id: 10,
+        title: "testing4",
+        pagesLeft: 3,
+        dueDate: "May 08, 2023",
+        progress: 95
+    },
 ]
 
 const RecentTable = () => {
     return (
-        <div>
+        <div className="h-full">
             <div className="flex items-center gap-x-6">
                 <div className="text-2xl font-semibold text-gray-50 grow">
                     Recent Files
@@ -64,7 +92,7 @@ const RecentTable = () => {
                     Completed
                 </a>
             </div>
-            <Table hoverable={true} className="mt-5 rounded-xl overflow-y-auto" id="mytable">
+            <Table hoverable={true} className="mt-5 rounded-xl" id="mytable">
                 <Table.Head id="mytable">
                     <Table.HeadCell className="text-gray-300">
                         Last Visit
@@ -85,27 +113,29 @@ const RecentTable = () => {
                     </Table.HeadCell>
                 </Table.Head>
                 <Table.Body id="mytable">
-                    {readingList.map((item) => (
-                        <Table.Row key={item.id} id="mytable">
-                            <Table.Cell className="text-gray-300">
-                                {item.dueDate}
-                            </Table.Cell>
-                            <Table.Cell className="text-gray-300">
-                                {item.title}
-                            </Table.Cell>
-                            <Table.Cell className="text-gray-300">
-                                {item.pagesLeft}
-                            </Table.Cell>
-                            <Table.Cell className="text-gray-300">
-                                <Progress progress={item.progress} size="sm" />
-                            </Table.Cell>
-                            <Table.Cell>
-                                <a href="idk" className="text-sm font-medium text-gray-400 hover:text-teal-500">
-                                    Edit
-                                </a>
-                            </Table.Cell>
-                        </Table.Row>
-                    ))}
+                    {readingList.map((item) => {
+                        return (
+                            <Table.Row key={item.id} id="mytable">
+                                <Table.Cell className="text-gray-300">
+                                    {item.dueDate}
+                                </Table.Cell>
+                                <Table.Cell className="text-gray-300">
+                                    {item.title}
+                                </Table.Cell>
+                                <Table.Cell className="text-gray-300">
+                                    {item.pagesLeft}
+                                </Table.Cell>
+                                <Table.Cell className="text-gray-300">
+                                    <Progress progress={item.progress} size="sm" />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <a href="idk" className="text-sm font-medium text-gray-400 hover:text-teal-500">
+                                        Edit
+                                    </a>
+                                </Table.Cell>
+                            </Table.Row>
+                        )
+                    })}
                 </Table.Body>
             </Table>
         </div>

@@ -4,7 +4,7 @@ import SectionBar from "./SectionBar";
 import Home from "./Home";
 const DashBoard = () => {
     return (
-        <div className="overflow-y-auto">
+        <div className="max-h-screen h-screen overflow-y-auto overflow-x-hidden">
             <FullNavigationBar />
             <SectionBar />
             <Home />

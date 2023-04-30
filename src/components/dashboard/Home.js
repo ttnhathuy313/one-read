@@ -4,10 +4,10 @@ import RecentTable from "./RecentTable";
 
 const Home = () => {
     return (
-        <div className="w-screen h-screen bg-gray-900 overflow-y-auto">
-            <div className="px-32 flex flex-col justify-start h-full pt-8 gap-y-8">
-                <Due />
-                <div style={{ overflowY: 'auto' }}>
+        <div className="h-full">
+            <div className="w-screen h-fit bg-gray-900">
+                <div className="px-32 flex flex-col justify-start pt-8 gap-y-8">
+                    <Due />
                     <RecentTable />
                 </div>
             </div>
