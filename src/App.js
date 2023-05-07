@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashBoard from "./components/dashboard/DashBoard";
 import AccountSetting from "./components/account-setting/AccountSetting";
 
+
 const App = () => {
   return (
     <BrowserRouter>
