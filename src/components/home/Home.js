@@ -1,7 +1,7 @@
 import React from "react";
-import FullNavigationBar from "./FullNavigationBar";
+import FullNavigationBar from "../FullNavigationBar";
 import SectionBar from "../SectionBar";
-import Home from "./Home";
+import Home from "./HomeBody";
 const DashBoard = () => {
     return (
         <div className="max-h-screen h-screen overflow-y-auto overflow-x-hidden">

@@ -1,7 +1,7 @@
 import React from 'react';
 import "./UserProfileCard.css";
 import UserProfileCard from "./UserProfileCard";
-import FullNavigationBar from '../dashboard/FullNavigationBar';
+import FullNavigationBar from '../FullNavigationBar';
 import SectionBar from '../SectionBar';
 
 const AccountSetting = () => {
