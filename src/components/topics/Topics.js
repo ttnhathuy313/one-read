@@ -5,7 +5,7 @@ import TopicsBody from "./TopicsBody";
 
 const Topics = () => {
     return (
-        <div className="max-h-screen h-screen overflow-y-auto overflow-x-hidden">
+        <div className="h-screen overflow-y-auto overflow-x-hidden">
             <FullNavigationBar />
             <SectionBar chosen={'Your Topics'} />
             <TopicsBody />
