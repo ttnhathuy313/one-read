@@ -11,7 +11,7 @@ const SectionBar = ({ chosen }) => {
         <div>
             <div className="flex items-center justify-start w-full h-11 bg-gray-700 space-x-10 px-8">
                 {sections.map((section) => (
-                    <div>
+                    <div key={section}>
                         {
                             chosen === section ?
                                 <a href={`/${normalize(section)}`} className="text-teal-500 font-medium text-sm" key={section}>
