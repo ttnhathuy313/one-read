@@ -1,7 +1,6 @@
 import React from "react";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Progress } from "flowbite-react";
 import "./TopicsBody.css"
 
 const topicData = [
