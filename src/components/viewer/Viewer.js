@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 import storage from "../../firebase";
 import { getDownloadURL, ref } from "firebase/storage";
 import * as pdfjs from 'pdfjs-dist';
@@ -16,7 +15,7 @@ const Viewer = () => {
     const canvasRef = useRef();
     const numPages = pdfDoc ? pdfDoc._pdfInfo.numPages : 0;
 
-    const renderPage = useCallback(async ({ pdfDoc, pageNum, scale }) => {
+    const renderPage = async ({ pdfDoc, pageNum, scale }) => {
         const page = await pdfDoc.getPage(pageNum);
         const viewport = page.getViewport({ scale: scale });
         const canvas = canvasRef.current;
@@ -30,7 +29,7 @@ const Viewer = () => {
         // issue: what happens for the first page?
         page.render(renderContext);
     }
-    )
+
 
     useEffect(() => {
         async function loadPdf() {
@@ -46,7 +45,7 @@ const Viewer = () => {
         }
 
         loadPdf();
-    }, [renderPage])
+    })
 
     const increasePageNum = () => {
         if (pageNum < numPages) {
