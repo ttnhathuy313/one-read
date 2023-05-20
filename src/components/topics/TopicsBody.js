@@ -59,7 +59,6 @@ const TopicsBody = () => {
                 </div>
                 <div className="w-full px-32 pt-8 flex flex-row gap-x-7 shrink-0 flex-wrap grow-0 gap-y-7 content-start">
                     {topicData.map((item) => {
-                        console.log(item.name)
                         return (
                             <div key={item.id} className="w-1/5 h-40 p-5 rounded-lg bg-gray-800 justify-between flex flex-col">
                                 <div className="grid-rows-2">
