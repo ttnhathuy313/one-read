@@ -29,7 +29,7 @@ const Viewer = () => {
         }
         // issue: what happens for the first page?
         page.render(renderContext);
-    }, []
+    }
     )
 
     useEffect(() => {
@@ -62,7 +62,6 @@ const Viewer = () => {
     }
 
 
-    const id = useParams().id;
     return (
         <div>
             <div>
