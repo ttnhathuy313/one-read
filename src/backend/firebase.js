@@ -1,7 +1,11 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getStorage } from "firebase/storage";
-import { getDatabase } from "firebase/database";
+
+const firebaseApp = require('firebase/app');
+const firebaseStorage = require('firebase/storage');
+const firestore = require('firebase/firestore');
+const initializeApp = firebaseApp.initializeApp;
+const getStorage = firebaseStorage.getStorage;
+const getFirestore = firestore.getFirestore;
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -14,6 +18,7 @@ const firebaseConfig = {
     projectId: "one-read-72fb0",
     storageBucket: "one-read-72fb0.appspot.com",
     messagingSenderId: "495901975405",
+    databaseURL: "https://one-read-72fb0-default-rtdb.firebaseio.com/",
     appId: "1:495901975405:web:a5dfa2df0b26663c11b064",
     measurementId: "G-94QLYVWV2J"
 };
@@ -21,5 +26,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
-const database = getDatabase(app);
-export { storage, database };
+const database = getFirestore(app);
+module.exports = { storage, database };
