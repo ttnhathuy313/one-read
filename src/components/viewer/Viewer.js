@@ -7,6 +7,7 @@ import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TextLayerBuilder } from 'pdfjs-dist/web/pdf_viewer';
 import { GlobalWorkerOptions } from 'pdfjs-dist';
+import "./Viewer.css"
 
 GlobalWorkerOptions.workerSrc = pdfjsWorker;
 let renderTask = null
@@ -30,6 +31,7 @@ const Viewer = () => {
         const context = canvas.getContext('2d');
         canvas.height = viewport.height;
         canvas.width = viewport.width;
+        const textLayer = textLayerRef.current;
         const renderContext = {
             canvasContext: context,
             viewport: viewport
@@ -37,29 +39,17 @@ const Viewer = () => {
         // issue: what happens for the first page?
         renderTask = page.render(renderContext);
 
-        textLayer = document.querySelector(".textLayer");
         const textContent = await page.getTextContent();
-        const textLayer = textLayerRef.current;
-        const textLayerBuilder = new TextLayerBuilder({
-            textLayerDiv: textLayer,
-            pageIndex: pageNum,
-            viewport: viewport
-        });
+
         pdfjs.renderTextLayer({
             textContent: textContent,
             container: textLayer,
-            viewport: viewport,
+            viewport: page.getViewport({ scale: scale }),
             textDivs: []
         });
 
-        textLayer.style.position = 'absolute';
-        textLayer.style.left = canvas.offsetLeft + 'px';
-        textLayer.style.top = canvas.offsetTop + 'px';
-        textLayer.style.height = canvas.offsetHeight + 'px';
-        textLayer.style.width = canvas.offsetWidth + 'px';
-        textLayerBuilder.setTextContentSource(textContent);
-        await textLayerBuilder.render(viewport);
-        console.log(textLayerBuilder)
+        textLayer.style = `height: ${viewport.height}px; width: ${viewport.width}px;`;
+
     }, []
     )
 
@@ -95,19 +85,14 @@ const Viewer = () => {
 
     return (
         <div>
-            <div>
-                <button onClick={decreasePageNum}>
-                    <FontAwesomeIcon icon={faChevronLeft} className="ml-2" />
-                </button>
-                <span>{pageNum}</span>
-                <button onClick={increasePageNum}>
-                    <FontAwesomeIcon icon={faChevronRight} className="ml-2" />
-                </button>
-            </div>
-            <div className="canvas-container">
-                <div>
-                    <canvas ref={canvasRef} />
-                    <div ref={textLayerRef} className="textLayer" id="text-layer textLayer"></div>
+            <div className="pdfViewer">
+                <div className="page">
+                    <div className="canvasWrapper">
+                        <canvas ref={canvasRef}></canvas>
+                    </div>
+                    <div ref={textLayerRef} className="textLayer">
+
+                    </div>
                 </div>
             </div>
         </div>
