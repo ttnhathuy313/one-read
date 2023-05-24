@@ -59,7 +59,7 @@ const Due = () => {
             </div>
             <div className="my-scroll flex flex-nowrap shrink-0 overflow-x-auto gap-x-8 mt-5">
                 {readingList.map((item) => (
-                    <a href="/idk" className="bg-gray-700 rounded-lg w-1/5 h-32 shrink-0 mb-3 hover:bg-teal-500 text-gray-400 hover:text-white" key={item.id}>
+                    <a href="/viewer/123" className="bg-gray-700 rounded-lg w-1/5 h-32 shrink-0 mb-3 hover:bg-teal-500 text-gray-400 hover:text-white" key={item.id}>
                         <div className="px-4 py-4 h-full w-full flex flex-col justify-between">
                             <div className="grid-rows-2">
                                 <div className="text-base font-semibold">
