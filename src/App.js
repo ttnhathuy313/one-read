@@ -15,10 +15,11 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/all-files" element={<Home />} />
         <Route path="/account-setting" element={<AccountSetting />} />
         <Route path="/your-topics" element={<Topics />} />
         <Route path="/viewer/:id" element={<Viewer />} />
-        <Route path="/supports" element={<Supports />} />
+        <Route path="/support" element={<Supports />} />
         <Route path="/change-password" element={<ChangePassword />} />
       </Routes>
     </BrowserRouter>

@@ -9,7 +9,6 @@ import { TextLayerBuilder } from 'pdfjs-dist/web/pdf_viewer';
 import { GlobalWorkerOptions } from 'pdfjs-dist';
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./Viewer.css"
-import { OpenAIApi, Configuration } from 'openai';
 
 GlobalWorkerOptions.workerSrc = pdfjsWorker;
 let renderTask = null

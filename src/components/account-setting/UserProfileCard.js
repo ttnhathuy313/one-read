@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Avatar, Button, TextInput, Label } from 'flowbite-react';
 import "./UserProfileCard.css";
+import { useNavigate } from 'react-router-dom';
 
 const UserProfileCard = () => {
   const [userName, setUserName] = useState('Testing Name');
   const [email, setEmail] = useState('testing@student.fulbright.edu.vn');
   const [remainingStorage] = useState('5GB');
+
+  const navigator = useNavigate();
 
   return (
     <div className="mt-9 bg-gray-900 flex flex-col gap-8 w-30rem">
@@ -47,7 +50,7 @@ const UserProfileCard = () => {
         </div>
         <div className="text-white/50 text-sm ">Remaining Storage: {remainingStorage}</div>
         <div className=" gap-4 button-row">
-          <Button color="dark" >Change Password</Button>
+          <Button color="dark" onClick={() => { navigator('/change-password') }}>Change Password</Button>
           <Button type="submit" className="bg-teal-500">Save changes</Button>
         </div>
       </form>
