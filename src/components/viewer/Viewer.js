@@ -32,6 +32,7 @@ const Viewer = () => {
         canvas.height = viewport.height;
         canvas.width = viewport.width;
         const textLayer = textLayerRef.current;
+        textLayer.innerHTML = "";
         const renderContext = {
             canvasContext: context,
             viewport: viewport
@@ -41,14 +42,14 @@ const Viewer = () => {
 
         const textContent = await page.getTextContent();
 
-        pdfjs.renderTextLayer({
+        let textRender = pdfjs.renderTextLayer({
             textContent: textContent,
             container: textLayer,
             viewport: page.getViewport({ scale: scale }),
             textDivs: []
         });
-
-        textLayer.style = `height: ${viewport.height}px; width: ${viewport.width}px;`;
+        console.log(textRender)
+        textLayer.style = `height: ${viewport.height}px; width: ${viewport.width}px; --scale-factor: ${scale};`;
 
     }, []
     )
@@ -85,12 +86,23 @@ const Viewer = () => {
 
     return (
         <div>
+            <div>
+                <button onClick={decreasePageNum}>
+                    <FontAwesomeIcon icon={faChevronLeft} className="ml-2" />
+                </button>
+                <span>{pageNum}</span>
+                <button onClick={increasePageNum}>
+                    <FontAwesomeIcon icon={faChevronRight} className="ml-2" />
+                </button>
+            </div>
             <div className="pdfViewer">
                 <div className="page">
                     <div className="canvasWrapper">
-                        <canvas ref={canvasRef}></canvas>
+                        <div className="mx-auto h-fit w-fit">
+                            <canvas ref={canvasRef}></canvas>
+                        </div>
                     </div>
-                    <div ref={textLayerRef} className="textLayer">
+                    <div ref={textLayerRef} className="textLayer mx-auto">
 
                     </div>
                 </div>
