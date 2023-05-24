@@ -7,7 +7,9 @@ import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TextLayerBuilder } from 'pdfjs-dist/web/pdf_viewer';
 import { GlobalWorkerOptions } from 'pdfjs-dist';
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./Viewer.css"
+import { OpenAIApi, Configuration } from 'openai';
 
 GlobalWorkerOptions.workerSrc = pdfjsWorker;
 let renderTask = null
@@ -72,6 +74,7 @@ const Viewer = () => {
         loadPdf();
     }, [pageNum, renderPage, pdfDoc])
 
+
     const increasePageNum = () => {
         if (pageNum < numPages) {
             setPageNum(pageNum + 1);
@@ -83,6 +86,49 @@ const Viewer = () => {
         }
     }
 
+    const handleVocabSearch = async () => {
+        let selection = window.getSelection();
+        const selected_text = selection.toString();
+        selection.modify("extend", "backward", "documentboundary");
+        const before_text = window.getSelection().toString().slice(-500);
+        selection.modify("extend", "forward", "documentboundary");
+        const after_text = window.getSelection().toString().slice(0, 100);
+        const prompt = "Explain the meaning of \"" + selected_text +
+            "\" in this paragraph: \"" + before_text + after_text + "\""
+        console.log(prompt)
+        selection.modify("move", "forward", "sentence");
+
+        // const openai = new OpenAIApi(new Configuration({
+        //     apiKey: "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" // your API key goes here
+        // }));
+
+        const openAIKey = "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"
+
+        const requestOptions = {
+            mode: 'no-cors',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + String(openAIKey),
+            },
+            body: JSON.stringify({
+                'prompt': 'hi chatgpt, i am new here',
+                'temperature': 0.1,
+                'max_tokens': Math.floor(700 / 2),
+                'top_p': 1,
+                'frequency_penalty': 0,
+                'presence_penalty': 0.5,
+                'stop': ["\"\"\""],
+            })
+        };
+        fetch('https://api.openai.com/v1/engines/text-davinci-003/completions', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.choices[0].text)
+            }).catch(err => {
+                console.log("Ran out of tokens for today! Try tomorrow!");
+            });
+    }
 
     return (
         <div>
@@ -93,6 +139,9 @@ const Viewer = () => {
                 <span>{pageNum}</span>
                 <button onClick={increasePageNum}>
                     <FontAwesomeIcon icon={faChevronRight} className="ml-2" />
+                </button>
+                <button onClick={handleVocabSearch}>
+                    <FontAwesomeIcon icon={faSearch} className="ml-2" />
                 </button>
             </div>
             <div className="pdfViewer">
@@ -107,7 +156,7 @@ const Viewer = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
